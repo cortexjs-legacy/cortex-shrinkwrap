@@ -1,0 +1,30 @@
+{
+  "name": "cortex-singlify",
+  "version": "0.0.1",
+  "description": "build cortex package into one",
+  "main": "./lib/index.js",
+  "bin": {
+    "cortex-singlify": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/villadora/cortex-singlify.git"
+  },
+  "keywords": [
+    "cortex",
+    "build",
+    "tool"
+  ],
+  "author": "villa.gao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/villadora/cortex-singlify/issues"
+  },
+  "homepage": "https://github.com/villadora/cortex-singlify",
+  "devDependencies": {
+    "cortex-profile": "^1.0.0"
+  }
+}
