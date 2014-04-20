@@ -1,4 +1,6 @@
-# c.js
+# Cortex Singlify
+
+Build the package and its dependencies into one file.
 
 
 ## License

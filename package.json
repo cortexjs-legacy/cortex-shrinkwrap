@@ -26,5 +26,8 @@
   "homepage": "https://github.com/villadora/cortex-singlify",
   "devDependencies": {
     "cortex-profile": "^1.0.0"
+  },
+  "dependencies": {
+    "optimist": "^0.6.1"
   }
 }
