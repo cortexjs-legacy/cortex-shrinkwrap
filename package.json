@@ -4,7 +4,7 @@
   "description": "build cortex package into one",
   "main": "./lib/index.js",
   "bin": {
-    "cortex-singlify": "./bin/cli.js"
+    "cortex-singlify": "./bin/cli.sh"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
