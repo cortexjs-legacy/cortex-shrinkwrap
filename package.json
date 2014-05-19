@@ -1,33 +1,35 @@
 {
-  "name": "cortex-singlify",
-  "version": "0.0.1",
-  "description": "build cortex package into one",
+  "name": "cortex-shrinkwrap",
+  "version": "0.0.0",
+  "description": "Lock down the versions of a package's dependencies",
   "main": "./lib/index.js",
   "bin": {
-    "cortex-singlify": "./bin/cli.sh"
+    "cortex-shrinkwrap": "./bin/shrinkwrap.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/villadora/cortex-singlify.git"
+    "url": "https://github.com/cortexjs/cortex-singlify.git"
   },
   "keywords": [
     "cortex",
+    "shrinkwrap",
     "build",
     "tool"
   ],
   "author": "villa.gao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/villadora/cortex-singlify/issues"
+    "url": "https://github.com/cortexjs/cortex-singlify/issues"
   },
-  "homepage": "https://github.com/villadora/cortex-singlify",
+  "homepage": "https://github.com/cortexjs/cortex-singlify",
   "devDependencies": {
-    "cortex-profile": "^1.0.0"
   },
   "dependencies": {
-    "optimist": "^0.6.1"
+    "optimist": "^0.6.1",
+    "cortex-profile": "~1.1.0",
+    "minimist": "^0.1.0"
   }
 }
