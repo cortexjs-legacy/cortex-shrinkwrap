@@ -37,12 +37,22 @@ if (async === undefined) // async default to true
 readjson.repo_root(process.cwd(), function(cwd) {
   // find cwd
   if (cwd) {
+    var profile = require('cortex-profile')().init();
     readjson.get_original_package(cwd, function(err, pkg) {
       err && onError(err);
 
       require('../lib')(pkg, {
         dev: dev,
-        async: async
+        async: async,
+        profile: profile,
+        logger: require('loggie')({
+          // export CORTEX_LOG_LEVEL=debug,info,error,warn
+          level: process.env['CORTEX_LOG_LEVEL'] || ['info', 'error', 'fatal', 'warn'],
+          // if the current process exit before `logger.end()` called, there will throw an error message
+          use_exit: false,
+          catch_exception: false,
+          colors: profile.get('colors')
+        }),
       }, function(err, shrinkwrap) {
         if (err) {
           onError(err);
