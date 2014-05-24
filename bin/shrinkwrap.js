@@ -48,7 +48,7 @@ readjson.repo_root(process.cwd(), function(cwd) {
           onError(err);
         }
 
-        fs.writeFile(path.join(cwd, 'cortex-shrinkwrap.json'), JSON.stringify(shrinkwrap, null, 4), function(err) {
+        fs.writeFile(path.join(cwd, 'cortex-shrinkwrap.json'), JSON.stringify(shrinkwrap, null, 2), function(err) {
           err && onError(err);
           process.stdout.write('wrote cortex-shrinkwrap.json\n');
         });
