@@ -21,7 +21,8 @@ if (argv.help || argv.h) {
     "", "Options:", "  -v, --version\t\tprint version",
     "  -h, --help\tshow help",
     "  --dev, --no-dev\tshrinkwrap devDependencies or not",
-    "  --async, --no-async\tshrinkwrap asyncDependencies or not, default is true"
+    "  --async, --no-async\tshrinkwrap asyncDependencies or not, default is true",
+    "  --enable-prerelease\tshrinkwrap will accept pre-release version in dependency analyze, default false"
   ];
   process.stdout.write(help.join("\n"));
   process.exit(0);
@@ -29,7 +30,8 @@ if (argv.help || argv.h) {
 
 
 var dev = argv.dev,
-  async = argv.async;
+  async = argv.async,
+  enablePrerelease = argv['enable-prerelease'];
 
 if (async === undefined) // async default to true
   async = true;
@@ -45,6 +47,7 @@ readjson.repo_root(process.cwd(), function(cwd) {
         dev: dev,
         async: async,
         profile: profile,
+        enablePrerelease: enablePrerelease,
         logger: require('loggie')({
           // export CORTEX_LOG_LEVEL=debug,info,error,warn
           level: process.env['CORTEX_LOG_LEVEL'] || ['info', 'error', 'fatal', 'warn'],

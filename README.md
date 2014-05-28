@@ -11,7 +11,7 @@ npm install cortex-shrinkwrap -g
 ## Usage
 
 ``` bash
-cortex shrinkwrap [--dev] [--async|--no-async]
+cortex shrinkwrap [--dev] [--async|--no-async] [--enable-prerelease]
 ```
 
 See more info by:
@@ -41,7 +41,7 @@ Pakcage information stored in cortex.json.
 
 * dev: whehter include `devDependencies`
 * async: whether incldue `asyncDependencies`
-
+* enablePrerelease: whether include prerelease version in shrinkwrap, defautl is =false=
 
 
 ## License
