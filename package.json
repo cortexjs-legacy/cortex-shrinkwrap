@@ -7,7 +7,7 @@
     "cortex-shrinkwrap": "./bin/shrinkwrap.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha -R spec test"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
     "url": "https://github.com/cortexjs/cortex-singlify/issues"
   },
   "homepage": "https://github.com/cortexjs/cortex-singlify",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^1.20.0"
+  },
   "dependencies": {
     "optimist": "^0.6.1",
     "cortex-profile": "~1.1.0",
