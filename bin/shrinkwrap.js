@@ -10,7 +10,7 @@ var argv = require('minimist')(process.argv.slice(2));
 
 if (argv.version || argv.v) {
   var pkg = require('../package.json');
-  process.stdout.write([pkg.name, 'v' + pkg.version].join(' ') + "\n");
+  process.stdout.write(pkg.version + '\n');
   process.exit(0);
 }
 

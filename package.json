@@ -1,6 +1,6 @@
 {
   "name": "cortex-shrinkwrap",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Lock down the versions of a package's dependencies",
   "main": "./lib/index.js",
   "bin": {
