@@ -17,15 +17,10 @@
     "type": "git",
     "url": "git://code.dianpingoa.com/f2e/cookie4cortex.git"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "/blob/master/LICENSE-MIT"
-    }
-  ],
-  "engines": {
-    "node": ">= 0.6.0"
-  },
+  "licenses": [{
+    "type": "MIT",
+    "url": "/blob/master/LICENSE-MIT"
+  }],
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-connect": "~0.3.0",

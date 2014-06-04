@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/jshint {bin,lib,test}/*.js",
-    "test": "./node_modules/.bin/mocha -R spec test"
+    "test": "npm run lint && ./node_modules/.bin/mocha -R spec test"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
   "homepage": "https://github.com/cortexjs/cortex-singlify",
   "devDependencies": {
     "mocha": "^1.20.0",
-    "jshint": "^2.5.1"
+    "jshint": "^2.5.1",
+    "underscore": "^1.6.0"
   },
   "dependencies": {
     "optimist": "^0.6.1",

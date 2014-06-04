@@ -20,9 +20,9 @@ if (argv.help || argv.h) {
   var help = ["Usage: cortex shrinkwrap [--dev] [--async] [options]",
     "", "Options:", "  -v, --version\t\tprint version",
     "  -h, --help\tshow help",
-    "  --dev, --no-dev\tshrinkwrap devDependencies or not",
-    "  --async, --no-async\tshrinkwrap asyncDependencies or not, default is true",
-    "  --enable-prerelease\tshrinkwrap will accept pre-release version in dependency analyze, default false"
+    "  --dev, --no-dev\tshrinkwrap devDependencies or not, disabled by default",
+    "  --async, --no-async\tshrinkwrap asyncDependencies or not, enabled by default",
+    "  --enable-prerelease\tshrinkwrap will accept pre-release version in dependency analyze, disable by default"
   ];
   process.stdout.write(help.join("\n"));
   process.exit(0);
