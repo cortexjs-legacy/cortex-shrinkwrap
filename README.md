@@ -1,5 +1,8 @@
 # Cortex Shrinkwrap
 
+ [![NPM version](https://badge.fury.io/js/cortex-shrinkwrap.png)](http://badge.fury.io/js/cortex-shrinkwrap) [![Build Status](https://travis-ci.org/cortexjs/cortex-shrinkwrap.png)](https://travis-ci.org/cortexjs/cortex-shrinkwrap)
+
+
 This command will lock down the versions of a package's dependencies and generate a `cortex-shrinkwrap.json` file in your package directory.
 
 ## Install 
