@@ -27,8 +27,16 @@ Also this lib can be used in nodejs.
 ```javascript
 var shrinkwrap = require('cortex-shrinkwrap');
 
-shrinkwrap(pkg, options, function(err, shrinked) {
+var sh = shrinkwrap(pkg, cache_root, options, function(err, shrinked) {
     // console.log(shrinked);
+});
+
+sh.on('ignoreDev', function(pkgName) {
+  
+});
+
+sh.on('ignoreAsync', function(pkgName) {
+  
 });
 
 ```
@@ -39,9 +47,9 @@ Pakcage information stored in cortex.json.
 
 ### Options
 
-* dev: whehter include `devDependencies`
+* dev: whehter include `devDependencies`, default value is =false=
 * async: whether incldue `asyncDependencies`
-* enablePrerelease: whether include prerelease version in shrinkwrap, defautl is =false=
+* enablePrerelease: whether include prerelease version in shrinkwrap, default value is =false=
 
 
 ## License

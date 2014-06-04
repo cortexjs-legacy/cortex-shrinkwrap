@@ -1,0 +1,41 @@
+{
+  "name": "events",
+  "version": "1.0.5",
+  "description": "A port of 'events' for cortex from node.js, make your node code run in browsers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "events": "git@github.com:cortexjs/browser-events.git"
+  },
+  "keywords": [
+    "checker",
+    "validator",
+    "validate",
+    "setter"
+  ],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "author": "kael",
+  "license": "MIT",
+  "bugs": {
+    "events": "https://github.com/cortexjs/browser-events/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "chai": "~1.8.0"
+  },
+  "cortex": {
+    "dependencies": {
+      "util": "~1.0.0"
+    },
+    "asyncDependencies": {},
+    "devDependencies": {
+      "assert": "~1.0.1"
+    },
+    "scripts": {}
+  }
+}

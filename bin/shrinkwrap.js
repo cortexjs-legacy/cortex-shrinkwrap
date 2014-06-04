@@ -43,29 +43,43 @@ readjson.repo_root(process.cwd(), function(cwd) {
     readjson.get_original_package(cwd, function(err, pkg) {
       err && onError(err);
 
-      require('../lib')(pkg, {
-        dev: dev,
-        async: async,
-        profile: profile,
-        enablePrerelease: enablePrerelease,
-        logger: require('loggie')({
+
+      var profile = require('cortex-profile')().init(),
+        logger = require('loggie')({
           // export CORTEX_LOG_LEVEL=debug,info,error,warn
+          /* jshint sub:true */
           level: process.env['CORTEX_LOG_LEVEL'] || ['info', 'error', 'fatal', 'warn'],
           // if the current process exit before `logger.end()` called, there will throw an error message
           use_exit: false,
           catch_exception: false,
           colors: profile.get('colors')
-        }),
+        });
+
+      var sh = require('../lib')(pkg, profile.get('cache_root'), {
+        dev: dev,
+        async: async,
+        profile: profile,
+        enablePrerelease: enablePrerelease
       }, function(err, shrinkwrap) {
         if (err) {
           onError(err);
         }
+
 
         fs.writeFile(path.join(cwd, 'cortex-shrinkwrap.json'), JSON.stringify(shrinkwrap, null, 2), function(err) {
           err && onError(err);
           process.stdout.write('wrote cortex-shrinkwrap.json\n');
         });
       });
+
+      sh.on('ignoreAsync', function(ad) {
+        logger && logger.warn('Exclude asyncDependencies: ' + ad);
+      });
+
+      sh.on('ignoreDev', function(d) {
+        logger && logger.warn('Exclude devDependencies: ' + d);
+      });
+
     });
   } else {
     onError(new Error("Can not find cortex.json/package.json in path: " + process.cwd()));

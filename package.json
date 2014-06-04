@@ -1,12 +1,13 @@
 {
   "name": "cortex-shrinkwrap",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Lock down the versions of a package's dependencies",
   "main": "./lib/index.js",
   "bin": {
     "cortex-shrinkwrap": "./bin/shrinkwrap.js"
   },
   "scripts": {
+    "lint": "./node_modules/.bin/jshint {bin,lib,test}/*.js",
     "test": "./node_modules/.bin/mocha -R spec test"
   },
   "repository": {
@@ -26,7 +27,8 @@
   },
   "homepage": "https://github.com/cortexjs/cortex-singlify",
   "devDependencies": {
-    "mocha": "^1.20.0"
+    "mocha": "^1.20.0",
+    "jshint": "^2.5.1"
   },
   "dependencies": {
     "optimist": "^0.6.1",
