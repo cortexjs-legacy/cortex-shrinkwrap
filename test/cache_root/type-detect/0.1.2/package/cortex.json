@@ -1,7 +1,9 @@
 {
   "dependencies": {},
   "asyncDependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "assert": "*"
+  },
   "scripts": {},
   "name": "type-detect",
   "version": "0.1.2",

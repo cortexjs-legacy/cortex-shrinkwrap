@@ -27,6 +27,27 @@ describe('test shrinkwrap package', function() {
   });
 
 
+  it('no nested devDependencies', function(done) {
+    shrinkwrap({
+      name: 'test-pkg',
+      version: "0.1.0",
+      engines: {
+        "neuron": "*"
+      },
+      dependencies: {
+        "type-detect": "~0.1.0"
+      },
+      devDependencies: {
+        "util": "~1.0.0"
+      }
+    }, cache_root, function(err, shrinked) {
+      if (err) return done(err);
+      assert(shrinked.dependencies);
+      var typed = shrinked.dependencies['type-detect'];
+      assert(!typed.dependencies);
+      done(err);
+    });
+  });
 
   it('nested shrinkwrap', function(done) {
     shrinkwrap({
@@ -63,7 +84,7 @@ describe('test shrinkwrap package', function() {
   });
 
 
-  it('enable prerelase', function(done) {
+  it('enable prerelease', function(done) {
     shrinkwrap({
       name: 'test-pkg',
       version: "0.1.0",
