@@ -41,21 +41,25 @@ Also this lib can be used in nodejs.
 ```javascript
 var shrinkwrap = require('cortex-shrinkwrap');
 
-var sh = shrinkwrap(pkg, cache_root, options, function(err, shrinked) {
+var traveller = shrinkwrap(pkg, cache_root, options, function(err, shrinked) {
     // console.log(shrinked);
 });
 
-sh.on('ignoreDev', function(pkgName) {
+traveller.on('ignoreDev', function(pkgName) {
   
 });
 
-sh.on('ignoreAsync', function(pkgName) {
+traveller.on('ignoreAsync', function(pkgName) {
   
 });
+
+
 
 ```
 
-### shrinkwrap(pkg, cache_root, [options], callback)
+### shrinkwrap(pkg, cache_root, [options], callback): Traveller
+
+Generate shrinkwrap.json from pkg, return a Traveller object, see [cortex-deps-traveller](http://github.com/cortexjs/cortex-deps-traveller) for more details;
 
 #### pkg
 
