@@ -55,16 +55,74 @@ sh.on('ignoreAsync', function(pkgName) {
 
 ```
 
-### pkg
+### shrinkwrap(pkg, cache_root, [options], callback)
+
+#### pkg
 
 Pakcage information stored in cortex.json.
 
-### Options
+#### cache_root
+
+Path of cortex build cache.
+
+#### Options
 
 * dev: whehter include `devDependencies`
 * async: whether incldue `asyncDependencies`
-* enablePrerelease: whether include prerelease version in shrinkwrap, default value is =false=
+* stableOnly: only include stable version in shrinkwrap, default value is =true=
 
+* enablePrerelease(=Deprecated=): whether include prerelease version in shrinkwrap, default value is =false=
+
+#### callback(err, shrinkedJson)
+
+
+### shrinktree((name, range)|pkg, cache_root, [options], callback)
+
+Generate a simple deps tree with information of shrinkwrap.json
+
+```javascript
+
+var shrinktree = require('cortex-shrinkwrap').shrinktree
+
+shrinktree('deep-eql', "~0.1.0", cache_root, function(err, tree) {
+  
+});
+
+// or provide a package json if already have one
+
+shrinktree({
+  name: 'deep-eql',
+  version: '0.1.0',
+  dependencies: {
+     'type-detect': "~1.0.0"
+  }
+}, cache_root, {
+  enableDev: true
+}, function(err, tree) {
+
+});
+
+```
+
+#### name
+
+Package name of the tree root
+
+#### range 
+
+Range of the tree root
+
+#### pkg
+
+Package json as the root
+
+#### cache_root
+
+Path of cortex build cache
+
+#### Options
+
+The same as options in shrinkwrap
 
 ## License
 
