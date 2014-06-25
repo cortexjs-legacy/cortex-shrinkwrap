@@ -11,29 +11,6 @@ This command will lock down the versions of a package's dependencies and generat
 npm install cortex-shrinkwrap -g
 ```
 
-## Usage
-
-``` bash
-cortex shrinkwrap [--dev] [--async|--no-async] [--enable-prerelease]
-```
-
-See more info by:
-
-``` bash
-cortex shrinkwrap -h
-```
-
-```
-Usage: cortex shrinkwrap [--dev] [--async] [options]
-
-Options:
-  -v, --version         print version
-  -h, --help    show help
-  --dev, --no-dev       shrinkwrap devDependencies or not, disabled by default
-  --async, --no-async   shrinkwrap asyncDependencies or not, enabled by default
-  --enable-prerelease   shrinkwrap will accept pre-release version in dependency analyze, disable by default% 
-```
-
 ## API
 
 Also this lib can be used in nodejs.
@@ -41,7 +18,7 @@ Also this lib can be used in nodejs.
 ```javascript
 var shrinkwrap = require('cortex-shrinkwrap');
 
-var traveller = shrinkwrap(pkg, cache_root, options, function(err, shrinked) {
+var traveller = shrinkwrap(pkg, options, function(err, shrinked) {
     // console.log(shrinked);
 });
 
@@ -57,7 +34,7 @@ traveller.on('ignoreAsync', function(pkgName) {
 
 ```
 
-### shrinkwrap(pkg, cache_root, [options], callback): Traveller
+### shrinkwrap(pkg, [options], callback): Traveller
 
 Generate shrinkwrap.json from pkg, return a Traveller object, see [cortex-deps-traveller](http://github.com/cortexjs/cortex-deps-traveller) for more details;
 
@@ -65,12 +42,11 @@ Generate shrinkwrap.json from pkg, return a Traveller object, see [cortex-deps-t
 
 Pakcage information stored in cortex.json.
 
-#### cache_root
-
-Path of cortex build cache.
 
 #### Options
 
+* cache_root(=require=): path of cortex package cache
+* built_root(=require=): path of directory where cortex packages will be built to
 * dev: whehter include `devDependencies`
 * async: whether incldue `asyncDependencies`
 * stableOnly: only include stable version in shrinkwrap, default value is =true=
@@ -80,7 +56,7 @@ Path of cortex build cache.
 #### callback(err, shrinkedJson)
 
 
-### shrinktree((name, range)|pkg, cache_root, [options], callback)
+### shrinktree((name, range)|pkg, [options], callback)
 
 Generate a simple deps tree with information of shrinkwrap.json
 
@@ -88,7 +64,7 @@ Generate a simple deps tree with information of shrinkwrap.json
 
 var shrinktree = require('cortex-shrinkwrap').shrinktree
 
-shrinktree('deep-eql', "~0.1.0", cache_root, function(err, tree) {
+shrinktree('deep-eql', "~0.1.0", { cache_root: cache_root, built_root: built_root }, function(err, tree) {
   
 });
 
@@ -100,7 +76,9 @@ shrinktree({
   dependencies: {
      'type-detect': "~1.0.0"
   }
-}, cache_root, {
+}, {
+  cache_root: cache_root,
+  built_root: built_root,
   enableDev: true
 }, function(err, tree) {
 
@@ -119,10 +97,6 @@ Range of the tree root
 #### pkg
 
 Package json as the root
-
-#### cache_root
-
-Path of cortex build cache
 
 #### Options
 
