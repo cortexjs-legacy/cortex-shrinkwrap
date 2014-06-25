@@ -91,15 +91,22 @@ describe('test shrinkwrap package', function() {
       engines: {
         "neuron": "*"
       },
-      dependencies: {}
+      dependencies: {},
+      asyncDependencies: {
+        'util': "~1.0.0"
+      }
     }, cache_root, {
-      enablePrerelease: true
+      enablePrerelease: true,
+      async: true
     }, function(err, shrinked) {
       if (err) return done(err);
       assert(shrinked.engines.neuron);
       assert.equal(shrinked.engines.neuron.from, "neuron@*");
       assert.equal(shrinked.engines.neuron.version, "5.1.0-beta");
       assert(!shrinked.dependencies);
+      assert(shrinked.asyncDependencies);
+
+      assert(shrinked.asyncDependencies.util);
       done(err);
     });
   });
@@ -118,7 +125,8 @@ describe('test shrinkwrap package', function() {
         }
       }, cache_root, {
         dev: true,
-        async: true
+        async: true,
+        merge: true
       },
       function(err, shrinked) {
         if (err) return done(err);

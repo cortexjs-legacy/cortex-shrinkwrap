@@ -40,6 +40,29 @@ describe('test shrinkwrap package', function() {
     });
   });
 
+  it('nested asyncDependencies', function(done) {
+    shrinktree({
+      name: 'test-pkg',
+      version: "0.1.0",
+      engines: {
+        "neuron": "*"
+      },
+      asyncDependencies: {
+        "deep-eql": "~0.1.2"
+      }
+    }, cache_root, {
+      async: true
+    }, function(err, shrinked) {
+      if (err) return done(err);
+      assert.equal(shrinked.version, "0.1.0");
+
+      assert(shrinked.asyncDependencies['deep-eql']);
+      assert(shrinked.asyncDependencies['deep-eql'].asyncDependencies);
+
+      done();
+    });
+  });
+
   it('nested shrinkwrap', function(done) {
     shrinktree({
       name: 'test-pkg',
@@ -50,9 +73,15 @@ describe('test shrinkwrap package', function() {
       dependencies: {
         "util": "~1.0.0",
         "dep-test": "~1.0.0"
+      },
+      asyncDependencies: {
+        "json": "~1.0.0"
       }
-    }, cache_root, function(err, shrinked) {
+    }, cache_root, {
+      async: true
+    }, function(err, shrinked) {
       if (err) return done(err);
+
       assert.equal(shrinked.version, '0.1.0');
       assert(shrinked.dependencies);
 
@@ -65,6 +94,11 @@ describe('test shrinkwrap package', function() {
 
       assert.equal(util.from, "util@~1.0.0");
       assert.equal(util.version, "1.0.4");
+
+      var json = shrinked.asyncDependencies.json;
+      assert(json);
+      assert.equal(json.from, "json@~1.0.0");
+      assert.equal(json.version, "1.0.1");
 
       done(err);
     });
