@@ -45,8 +45,8 @@ Pakcage information stored in cortex.json.
 
 #### Options
 
-* cache_root(=require=): path of cortex package cache
-* built_root(=require=): path of directory where cortex packages will be built to
+* cacheRoot(=require=): path of cortex package cache
+* builtRoot(=require=): path of directory where cortex packages will be built to
 * dev: whehter include `devDependencies`
 * async: whether incldue `asyncDependencies`
 * stableOnly: only include stable version in shrinkwrap, default value is =true=
@@ -64,7 +64,7 @@ Generate a simple deps tree with information of shrinkwrap.json
 
 var shrinktree = require('cortex-shrinkwrap').shrinktree
 
-shrinktree('deep-eql', "~0.1.0", { cache_root: cache_root, built_root: built_root }, function(err, tree) {
+shrinktree('deep-eql', "~0.1.0", { cacheRoot: cache_root, builtRoot: built_root }, function(err, tree) {
   
 });
 
@@ -77,8 +77,8 @@ shrinktree({
      'type-detect': "~1.0.0"
   }
 }, {
-  cache_root: cache_root,
-  built_root: built_root,
+  cacheRoot: cache_root,
+  builtRoot: built_root,
   enableDev: true
 }, function(err, tree) {
 

@@ -14,7 +14,10 @@ describe('test shrinkwrap package', function() {
         "neuron": "*"
       },
       dependencies: {}
-    }, cache_root, function(err, shrinked) {
+    }, {
+      cache_root: cache_root,
+      built_root: cache_root
+    }, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
@@ -40,7 +43,10 @@ describe('test shrinkwrap package', function() {
       devDependencies: {
         "util": "~1.0.0"
       }
-    }, cache_root, function(err, shrinked) {
+    }, {
+      cache_root: cache_root,
+      built_root: cache_root
+    }, function(err, shrinked) {
       if (err) return done(err);
       assert(shrinked.dependencies);
       var typed = shrinked.dependencies['type-detect'];
@@ -60,7 +66,10 @@ describe('test shrinkwrap package', function() {
         "util": "~1.0.0",
         "dep-test": "~1.0.0"
       }
-    }, cache_root, function(err, shrinked) {
+    }, {
+      cache_root: cache_root,
+      built_root: cache_root
+    }, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
@@ -95,7 +104,9 @@ describe('test shrinkwrap package', function() {
       asyncDependencies: {
         'util': "~1.0.0"
       }
-    }, cache_root, {
+    }, {
+      cache_root: cache_root,
+      built_root: cache_root,
       enablePrerelease: true,
       async: true
     }, function(err, shrinked) {
@@ -123,7 +134,9 @@ describe('test shrinkwrap package', function() {
         asyncDependencies: {
           'util': "~1.0.0"
         }
-      }, cache_root, {
+      }, {
+        cache_root: cache_root,
+        built_root: cache_root,
         dev: true,
         async: true,
         merge: true
@@ -139,10 +152,10 @@ describe('test shrinkwrap package', function() {
         done(err);
       });
 
-    sh.on('ignoreDev', function(d) {
+    sh && sh.on('ignoreDev', function(d) {
       ignores.push(d);
     });
-    sh.on('ignoreAsync', function(d) {
+    sh && sh.on('ignoreAsync', function(d) {
       ignores.push(d);
     });
 
@@ -157,7 +170,10 @@ describe('test shrinkwrap package', function() {
       devDependencies: {
         "assert": "~1.0.0"
       }
-    }, cache_root, function(err, shrinked) {
+    }, {
+      cache_root: cache_root,
+      built_root: cache_root
+    }, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(ignoreDevs.length, 1);
       assert.equal(ignoreDevs[0], "assert");
@@ -165,7 +181,7 @@ describe('test shrinkwrap package', function() {
       done(err);
     });
 
-    sh.on('ignoreDev', function(d) {
+    sh && sh.on('ignoreDev', function(d) {
       ignoreDevs.push(d);
     });
 
