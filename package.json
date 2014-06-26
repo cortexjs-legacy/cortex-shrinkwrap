@@ -1,6 +1,6 @@
 {
   "name": "cortex-shrinkwrap",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lock down the versions of a package's dependencies",
   "main": "./lib/index.js",
   "scripts": {
@@ -33,6 +33,6 @@
     "read-cortex-json": "^2.0.0",
     "semver": "~2.3.0",
     "sorted-object": "~1.0.0",
-    "cortex-deps-traveller": "^1.0.0"
+    "cortex-deps-traveller": "^1.1.0"
   }
 }
