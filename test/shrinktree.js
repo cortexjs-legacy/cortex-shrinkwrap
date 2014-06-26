@@ -4,14 +4,11 @@ var _ = require('underscore');
 var shrinktree = require('../lib').shrinktree;
 
 describe('test shrinkwrap package', function() {
-  var cache_root = path.resolve(__dirname, './cache_root');
-  var built_root = cache_root;
+  var built_root = path.resolve(__dirname, './built_root');
+
 
   it('simple package', function(done) {
-    shrinktree('deep-eql', "~0.1.1", {
-      cache_root: cache_root,
-      built_root: built_root
-    }, function(err, tree) {
+    shrinktree('deep-eql', "~0.1.1", built_root, function(err, tree) {
       if (err) return done(err);
       assert.equal(tree.version, '0.1.3');
       assert.equal(tree.from, 'deep-eql@~0.1.1');
@@ -35,10 +32,7 @@ describe('test shrinkwrap package', function() {
       devDependencies: {
         "util": "~1.0.0"
       }
-    }, {
-      cache_root: cache_root,
-      built_root: built_root
-    }, function(err, shrinked) {
+    }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert(shrinked.dependencies);
       var typed = shrinked.dependencies['type-detect'];
@@ -57,9 +51,7 @@ describe('test shrinkwrap package', function() {
       asyncDependencies: {
         "deep-eql": "~0.1.2"
       }
-    }, {
-      cache_root: cache_root,
-      built_root: built_root,
+    }, built_root, {
       async: true
     }, function(err, shrinked) {
       if (err) return done(err);
@@ -86,10 +78,8 @@ describe('test shrinkwrap package', function() {
       asyncDependencies: {
         "json": "~1.0.0"
       }
-    }, {
-      async: true,
-      cache_root: cache_root,
-      built_root: built_root
+    }, built_root, {
+      async: true
     }, function(err, shrinked) {
       if (err) return done(err);
 

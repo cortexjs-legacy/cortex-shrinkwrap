@@ -4,7 +4,7 @@ var _ = require('underscore');
 var shrinkwrap = require('../lib');
 
 describe('test shrinkwrap package', function() {
-  var cache_root = path.resolve(__dirname, './cache_root');
+  var built_root = path.resolve(__dirname, './built_root');
 
   it('simple package', function(done) {
     shrinkwrap({
@@ -14,10 +14,7 @@ describe('test shrinkwrap package', function() {
         "neuron": "*"
       },
       dependencies: {}
-    }, {
-      cache_root: cache_root,
-      built_root: cache_root
-    }, function(err, shrinked) {
+    }, built_root, , function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
@@ -43,10 +40,7 @@ describe('test shrinkwrap package', function() {
       devDependencies: {
         "util": "~1.0.0"
       }
-    }, {
-      cache_root: cache_root,
-      built_root: cache_root
-    }, function(err, shrinked) {
+    }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert(shrinked.dependencies);
       var typed = shrinked.dependencies['type-detect'];
@@ -66,10 +60,7 @@ describe('test shrinkwrap package', function() {
         "util": "~1.0.0",
         "dep-test": "~1.0.0"
       }
-    }, {
-      cache_root: cache_root,
-      built_root: cache_root
-    }, function(err, shrinked) {
+    }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
@@ -104,9 +95,7 @@ describe('test shrinkwrap package', function() {
       asyncDependencies: {
         'util': "~1.0.0"
       }
-    }, {
-      cache_root: cache_root,
-      built_root: cache_root,
+    }, built_root, {
       enablePrerelease: true,
       async: true
     }, function(err, shrinked) {
@@ -134,9 +123,7 @@ describe('test shrinkwrap package', function() {
         asyncDependencies: {
           'util': "~1.0.0"
         }
-      }, {
-        cache_root: cache_root,
-        built_root: cache_root,
+      }, built_root, {
         dev: true,
         async: true,
         merge: true
@@ -170,10 +157,7 @@ describe('test shrinkwrap package', function() {
       devDependencies: {
         "assert": "~1.0.0"
       }
-    }, {
-      cache_root: cache_root,
-      built_root: cache_root
-    }, function(err, shrinked) {
+    }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(ignoreDevs.length, 1);
       assert.equal(ignoreDevs[0], "assert");
