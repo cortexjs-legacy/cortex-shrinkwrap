@@ -14,7 +14,7 @@ describe('test shrinkwrap package', function() {
         "neuron": "*"
       },
       dependencies: {}
-    }, built_root, , function(err, shrinked) {
+    }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
