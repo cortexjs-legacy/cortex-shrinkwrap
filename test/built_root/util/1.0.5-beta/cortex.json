@@ -6,7 +6,7 @@
   "devDependencies": {},
   "scripts": {},
   "name": "util",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A port of 'util' for cortex from node.js, make your node code run in browsers.",
   "main": "index.js",
   "repository": {

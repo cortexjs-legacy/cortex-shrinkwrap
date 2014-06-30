@@ -18,9 +18,9 @@ describe('test shrinkwrap package', function() {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
-      assert(shrinked.engines.neuron);
-      assert.equal(shrinked.engines.neuron.from, "neuron@*");
-      assert.equal(shrinked.engines.neuron.version, "5.0.0");
+      // assert(shrinked.engines.neuron);
+      // assert.equal(shrinked.engines.neuron.from, "neuron@*");
+      // assert.equal(shrinked.engines.neuron.version, "5.0.0");
       assert(!shrinked.dependencies);
       done(err);
     });
@@ -64,9 +64,6 @@ describe('test shrinkwrap package', function() {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
       assert.equal(shrinked.version, '0.1.0');
-      assert(shrinked.engines.neuron);
-      assert.equal(shrinked.engines.neuron.from, "neuron@*");
-      assert.equal(shrinked.engines.neuron.version, "5.0.0");
       assert(shrinked.dependencies);
 
       var util = shrinked.dependencies.util;
@@ -100,13 +97,15 @@ describe('test shrinkwrap package', function() {
       async: true
     }, function(err, shrinked) {
       if (err) return done(err);
-      assert(shrinked.engines.neuron);
-      assert.equal(shrinked.engines.neuron.from, "neuron@*");
-      assert.equal(shrinked.engines.neuron.version, "5.1.0-beta");
+      // assert(shrinked.engines.neuron);
+      // assert.equal(shrinked.engines.neuron.from, "neuron@*");
+      // assert.equal(shrinked.engines.neuron.version, "5.1.0-beta");
       assert(!shrinked.dependencies);
       assert(shrinked.asyncDependencies);
 
       assert(shrinked.asyncDependencies.util);
+      assert(shrinked.asyncDependencies.util.from, "util@~1.0.0");
+      assert(shrinked.asyncDependencies.util.version, "1.0.5-beta");
       done(err);
     });
   });
