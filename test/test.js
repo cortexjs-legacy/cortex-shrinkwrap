@@ -17,7 +17,7 @@ describe('test shrinkwrap package', function() {
     }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
-      assert.equal(shrinked.version, '0.1.0');
+      // assert.equal(shrinked.version, '0.1.0');
       // assert(shrinked.engines.neuron);
       // assert.equal(shrinked.engines.neuron.from, "neuron@*");
       // assert.equal(shrinked.engines.neuron.version, "5.0.0");
@@ -63,7 +63,7 @@ describe('test shrinkwrap package', function() {
     }, built_root, function(err, shrinked) {
       if (err) return done(err);
       assert.equal(shrinked.name, 'test-pkg');
-      assert.equal(shrinked.version, '0.1.0');
+      // assert.equal(shrinked.version, '0.1.0');
       assert(shrinked.dependencies);
 
       var util = shrinked.dependencies.util;
@@ -90,7 +90,7 @@ describe('test shrinkwrap package', function() {
       },
       dependencies: {},
       asyncDependencies: {
-        'util': "~1.0.0"
+        'type-detect': "~0.1.0"
       }
     }, built_root, {
       enablePrerelease: true,
@@ -103,9 +103,9 @@ describe('test shrinkwrap package', function() {
       assert(!shrinked.dependencies);
       assert(shrinked.asyncDependencies);
 
-      assert(shrinked.asyncDependencies.util);
-      assert(shrinked.asyncDependencies.util.from, "util@~1.0.0");
-      assert(shrinked.asyncDependencies.util.version, "1.0.5-beta");
+      assert(shrinked.asyncDependencies['type-detect']);
+      assert.equal(shrinked.asyncDependencies['type-detect'].from, "type-detect@~0.1.0");
+      assert.equal(shrinked.asyncDependencies['type-detect'].version, "0.1.3-beta");
       done(err);
     });
   });
