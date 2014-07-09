@@ -48,9 +48,8 @@ Pakcage information stored in cortex.json.
 
 * dev: whehter include `devDependencies`
 * async: whether incldue `asyncDependencies`
-* stableOnly: only include stable version in shrinkwrap, default value is =true=
+* stableOnly: only include stable version in shrinkwrap, default value is =false=
 
-* enablePrerelease(=Deprecated=): whether include prerelease version in shrinkwrap, default value is =false=
 
 #### callback(err, shrinkedJson)
 
