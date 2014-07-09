@@ -44,6 +44,7 @@ describe('test shrinkwrap package', function() {
       if (err) return done(err);
       assert(shrinked.dependencies);
       var typed = shrinked.dependencies['type-detect'];
+      assert.equal(typed.version, "0.1.3-beta");
       assert(!typed.dependencies);
       done(err);
     });
@@ -93,7 +94,6 @@ describe('test shrinkwrap package', function() {
         'type-detect': "~0.1.0"
       }
     }, built_root, {
-      stable_only: false,
       async: true
     }, function(err, shrinked) {
       if (err) return done(err);
