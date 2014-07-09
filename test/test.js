@@ -81,7 +81,7 @@ describe('test shrinkwrap package', function() {
   });
 
 
-  it('enable prerelease', function(done) {
+  it('stable only', function(done) {
     shrinkwrap({
       name: 'test-pkg',
       version: "0.1.0",
@@ -93,7 +93,7 @@ describe('test shrinkwrap package', function() {
         'type-detect': "~0.1.0"
       }
     }, built_root, {
-      enablePrerelease: true,
+      stable_only: false,
       async: true
     }, function(err, shrinked) {
       if (err) return done(err);
