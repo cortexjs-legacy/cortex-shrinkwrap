@@ -4,7 +4,7 @@
   "description": "Lock down the versions of a package's dependencies",
   "main": "./lib/index.js",
   "scripts": {
-    "lint": "./node_modules/.bin/jshint {bin,lib,test}/*.js",
+    "lint": "./node_modules/.bin/jshint lib/*.js test/*.js",
     "test": "npm run lint && ./node_modules/.bin/mocha -R spec test"
   },
   "repository": {
