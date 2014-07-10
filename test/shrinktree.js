@@ -91,7 +91,7 @@ describe('test shrinkwrap package', function() {
       assert.equal(util.version, "1.0.5");
 
       var depTest = shrinked.dependencies['dep-test'];
-      var util = depTest.dependencies.util;
+      util = depTest.dependencies.util;
 
       assert.equal(util.from, "util@~1.0.0");
       assert.equal(util.version, "1.0.4");

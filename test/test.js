@@ -72,7 +72,7 @@ describe('test shrinkwrap package', function() {
       assert.equal(util.version, "1.0.5");
 
       var depTest = shrinked.dependencies['dep-test'];
-      var util = depTest.dependencies.util;
+      util = depTest.dependencies.util;
 
       assert.equal(util.from, "util@~1.0.0");
       assert.equal(util.version, "1.0.4");
@@ -138,12 +138,14 @@ describe('test shrinkwrap package', function() {
         done(err);
       });
 
-    sh && sh.on('ignoreDev', function(d) {
-      ignores.push(d);
-    });
-    sh && sh.on('ignoreAsync', function(d) {
-      ignores.push(d);
-    });
+    if (sh) {
+      sh.on('ignoreDev', function(d) {
+        ignores.push(d);
+      });
+      sh.on('ignoreAsync', function(d) {
+        ignores.push(d);
+      });
+    }
 
   });
 
