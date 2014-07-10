@@ -165,10 +165,12 @@ describe('test shrinkwrap package', function() {
       assert(!shrinked.dependencies);
       done(err);
     });
-
-    sh && sh.on('ignoreDev', function(d) {
-      ignoreDevs.push(d);
-    });
+    
+    if (sh) {
+      sh.on('ignoreDev', function(d) {
+        ignoreDevs.push(d);
+      });
+    }
 
   });
 });
