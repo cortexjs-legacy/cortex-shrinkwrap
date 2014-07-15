@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "a": "~1.0.0",
+    "c": "~1.0.0",
+    "cycle": "^1.0.0",
+    "f": "1.0.0"
+  },
+  "asyncDependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "name": "mixed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "license": "MIT",
+  "readme": "# mixed",
+  "readmeFilename": "README.md",
+  "_id": "mixed@1.0.0",
+  "styles": []
+}
