@@ -6,6 +6,29 @@ var shrinkwrap = require('../lib');
 describe('test shrinkwrap package', function() {
   var built_root = path.resolve(__dirname, './built_root');
 
+
+  it('cycle', function(done) {
+    shrinkwrap({
+      name: 'test-pkg',
+      version: "0.1.0",
+      engines: {
+        "neuron": "*"
+      },
+      dependencies: {
+        "a": "~1.0.0",
+        "mixed": "*"
+      }
+    }, built_root, function(err, shrinked) {
+      if (err) return done(err);
+      assert.equal(shrinked.name, 'test-pkg');
+      assert.equal(shrinked.version, '0.1.0');
+      // assert(shrinked.engines.neuron);
+      // assert.equal(shrinked.engines.neuron.from, "neuron@*");
+      // assert.equal(shrinked.engines.neuron.version, "5.0.0");
+      done(err);
+    });
+  });
+
   it('simple package', function(done) {
     shrinkwrap({
       name: 'test-pkg',
@@ -165,7 +188,7 @@ describe('test shrinkwrap package', function() {
       assert(!shrinked.dependencies);
       done(err);
     });
-    
+
     if (sh) {
       sh.on('ignoreDev', function(d) {
         ignoreDevs.push(d);
