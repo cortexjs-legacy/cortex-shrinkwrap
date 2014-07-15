@@ -32,6 +32,6 @@
     "async": "~0.9.0",
     "semver": "~2.3.0",
     "sorted-object": "~1.0.0",
-    "cortex-deps-traveller": "^1.2.0"
+    "cortex-deps-traveller": "^2.0.0"
   }
 }
