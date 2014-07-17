@@ -7,6 +7,39 @@ describe('test shrinkwrap package', function() {
   var built_root = path.resolve(__dirname, './built_root');
 
 
+  it('mixed', function(done) {
+    shrinkwrap({
+      name: 'mixed',
+      version: "0.1.0",
+      engines: {
+        "neuron": "*"
+      },
+      dependencies: {
+        "a": "~1.0.0",
+        "type-detect": "~0.1.0 <=0.1.2",
+        "mixed": "*"
+      }
+    }, built_root, function(err, shrinked) {
+      if (err) return done(err);
+      assert.equal(shrinked.name, 'mixed');
+      assert.equal(shrinked.version, '0.1.0');
+      // assert(shrinked.engines.neuron);
+      // assert.equal(shrinked.engines.neuron.from, "neuron@*");
+      // assert.equal(shrinked.engines.neuron.version, "5.0.0");
+      assert(shrinked.dependencies);
+      assert(shrinked.dependencies.a);
+      assert(shrinked.dependencies.a.dependencies.b);
+      assert(shrinked.dependencies.a.dependencies.b.dependencies.a);
+
+      var typed = shrinked.dependencies['type-detect'];
+      assert.equal(typed.version, "0.1.2");
+      assert(!typed.dependencies);
+      done(err);
+    });
+  });
+
+
+
   it('cycle', function(done) {
     shrinkwrap({
       name: 'test-pkg',
@@ -117,7 +150,8 @@ describe('test shrinkwrap package', function() {
         'type-detect': "~0.1.0"
       }
     }, built_root, {
-      async: true
+      async: true,
+      stable_only: true
     }, function(err, shrinked) {
       if (err) return done(err);
       // assert(shrinked.engines.neuron);
@@ -128,7 +162,7 @@ describe('test shrinkwrap package', function() {
 
       assert(shrinked.asyncDependencies['type-detect']);
       assert.equal(shrinked.asyncDependencies['type-detect'].from, "type-detect@~0.1.0");
-      assert.equal(shrinked.asyncDependencies['type-detect'].version, "0.1.3-beta");
+      assert.equal(shrinked.asyncDependencies['type-detect'].version, "0.1.2");
       done(err);
     });
   });
