@@ -1,3 +1,5 @@
+/* global: describe, it */
+
 var path = require('path');
 var assert = require('assert');
 var _ = require('underscore');
@@ -5,7 +7,6 @@ var shrinkwrap = require('../lib');
 
 describe('test shrinkwrap package', function() {
   var built_root = path.resolve(__dirname, './built_root');
-
 
   it('mixed', function(done) {
     shrinkwrap({
