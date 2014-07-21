@@ -13,7 +13,7 @@ describe('test shrinkwrap cycle', function() {
       assert.equal(tree.version, '1.0.0');
       assert.equal(tree.from, 'cycle@~1.0.0');
       assert(tree.dependencies);
-      assert(tree.dependencies['cycle']);
+      assert(tree.dependencies.cycle);
       done(err);
     });
   });
