@@ -139,7 +139,7 @@ describe('test shrinkwrap package', function() {
   });
 
 
-  it('stable only', function(done) {
+  it('prerelease', function(done) {
     shrinkwrap({
       name: 'test-pkg',
       version: "0.1.0",
@@ -151,8 +151,7 @@ describe('test shrinkwrap package', function() {
         'type-detect': "~0.1.0"
       }
     }, built_root, {
-      async: true,
-      stable_only: true
+      async: true
     }, function(err, shrinked) {
       if (err) return done(err);
       // assert(shrinked.engines.neuron);
@@ -163,7 +162,7 @@ describe('test shrinkwrap package', function() {
 
       assert(shrinked.asyncDependencies['type-detect']);
       assert.equal(shrinked.asyncDependencies['type-detect'].from, "type-detect@~0.1.0");
-      assert.equal(shrinked.asyncDependencies['type-detect'].version, "0.1.2");
+      assert.equal(shrinked.asyncDependencies['type-detect'].version, "0.1.3-beta");
       done(err);
     });
   });
